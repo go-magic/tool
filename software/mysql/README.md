@@ -51,3 +51,9 @@ use mysql;
 update user set host = '%' where user ='root';
 flush privileges;
 ```
+
+- 允许外部指定ip访问3306端口
+```
+firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=192.168.1.141/2 port port=3306 protocol=tcp accept'
+systemctl restart firewalld.service
+```
